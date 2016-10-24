@@ -17,8 +17,9 @@ RUN echo "anon_upload_enable=YES" >> /etc/vsftpd/vsftpd.conf
 RUN echo "anon_root=/var/ftp" >> /etc/vsftpd/vsftpd.conf
 RUN echo "anon_mkdir_write_enable=YES" >> /etc/vsftpd/vsftpd.conf
 RUN echo "xferlog_enable=YES" >> /etc/vsftpd/vsftpd.conf
-RUN echo "xferlog_file=/var/log/vsftpd.log" /etc/vsftpd/vsftpd.conf
+RUN echo "xferlog_file=/var/log/vsftpd.log" >> /etc/vsftpd/vsftpd.conf
+RUN echo "allow_writeable_chroot=YES" >> /etc/vsftpd/vsftpd.conf
 
 EXPOSE 21 30000-30009
 
-CMD /sbin/vsftpd
+CMD chmod -R 777 /var/ftp && /sbin/vsftpd
