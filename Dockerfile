@@ -20,6 +20,9 @@ RUN echo "xferlog_enable=YES" >> /etc/vsftpd/vsftpd.conf
 RUN echo "xferlog_file=/var/log/vsftpd.log" >> /etc/vsftpd/vsftpd.conf
 RUN echo "allow_writeable_chroot=YES" >> /etc/vsftpd/vsftpd.conf
 
+RUN useradd cache
+RUN echo 'cache:cache' | chpasswd
+
 EXPOSE 21 30000-30009
 
-CMD chmod -R 777 /var/ftp && /sbin/vsftpd
+CMD /sbin/vsftpd
