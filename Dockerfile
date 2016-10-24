@@ -8,6 +8,8 @@ RUN yum -y install vsftpd ; yum clean all
 
 COPY config/vsftpd.conf /etc/vsftpd/vsftpd-anon.conf
 
+RUN sed -i.bak 's!listen=NO!listen=YES!g' /etc/vsftpd/vsftpd.conf
+
 RUN echo "background=NO" >> /etc/vsftpd/vsftpd.conf
 
 EXPOSE 21 30000-30009
