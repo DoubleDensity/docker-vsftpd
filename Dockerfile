@@ -6,7 +6,7 @@ MAINTAINER Buttetsu Batou <doubledense@gmail.com>
 
 RUN yum -y install bash vsftpd ; yum clean all
 
-COPY config/vsftpd.conf /etc/vsftpd/vsftpd.conf
+COPY config/vsftpd.conf /etc/vsftpd/vsftpd-anon.conf
 
 EXPOSE 21 30000-30009
 
